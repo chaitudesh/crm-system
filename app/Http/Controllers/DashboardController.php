@@ -15,6 +15,9 @@ class DashboardController extends Controller
     }
     public function index()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $totalCustomers = Customer::count();
         $totalTasks = Task::count();
         $completedTasks = Task::where('is_completed', true)->count();

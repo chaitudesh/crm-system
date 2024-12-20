@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Include FontAwesome Icons (for icons like users, tasks, etc.) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
     <style>
         /* Navbar Styling */
         .navbar {
@@ -81,27 +82,14 @@
                     <!-- Search Bar -->
                     @if(session('user_name'))
 
-                    <!-- Notifications -->
-                    <li class="nav-item dropdown mx-3">
-                        <a class="nav-link position-relative" href="#" id="notificationsDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-bell"></i>
-                            <span
-                                class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-circle">4</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
-                            <li><a class="dropdown-item" href="#">Notification 1</a></li>
-                            <li><a class="dropdown-item" href="#">Notification 2</a></li>
-                            <li><a class="dropdown-item" href="#">See all notifications</a></li>
-                        </ul>
-                    </li>
+                   
 
                     <!-- Profile Dropdown -->
                    
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="rounded-circle me-2" alt="Profile">
                                 <span>{{session('user_name');}} </span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
@@ -110,7 +98,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                                <li><a class="dropdown-item text-danger" href="{{Route('logout')}}">Logout</a></li>
                             </ul>
                         </li>
                     @endif
@@ -134,6 +122,7 @@
     <!-- Bootstrap JS and Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

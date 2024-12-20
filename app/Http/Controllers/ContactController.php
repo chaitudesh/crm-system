@@ -8,17 +8,23 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-        if (!session()->has('user_name')) {
-            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        if (!Auth()->check()) {
+            redirect()->route('dashboard');
         }
     }
     public function index()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $contacts = Contact::all();
         return view('contacts.index', compact('contacts'));
     }
     public function create()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $customers = Customer::all();
         return view('contacts.create', compact('customers'));
     }
@@ -50,6 +56,9 @@ class ContactController extends Controller
 
     public function edit($id)
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $contact = Contact::findOrFail($id); // Retrieve the contact or throw a 404 error
         return view('contacts.edit', compact('contact')); // Return the edit view with the contact data
     }

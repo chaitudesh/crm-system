@@ -16,6 +16,9 @@ class OpportunitiesController extends Controller
 
     public function index()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         // Retrieve all opportunities
         $opportunities = Opportunity::all();
 
@@ -24,6 +27,9 @@ class OpportunitiesController extends Controller
     }
     public function create(Lead $lead)
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         return view('opportunities.create', compact('lead'));
     }
 
