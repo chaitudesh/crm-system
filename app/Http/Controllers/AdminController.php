@@ -15,11 +15,12 @@ class AdminController extends Controller
 
     public function submit(Request $request)
     {
+
         // Validate the incoming request data
         $validated = $request->validate([
             'fname' => 'required|string',
             'lname' => 'required|string',
-            'phone' => 'nullable|string',
+            'phone' => 'required|max:10',
             'address' => 'required|string',
         ]);
 
@@ -27,6 +28,6 @@ class AdminController extends Controller
         Admin::create($validated);
 
         // Redirect to the login route
-        return redirect()->route('login');
+        return true;
     }
 }
