@@ -135,17 +135,18 @@
                                 <td>{{ $lead->phone }}</td>
                                 <td>{{ $lead->source }}</td>
                                 <td>
-                                    <span class="badge 
-                                                                                                    @if($lead->status === 'New') badge-primary 
-                                                                                                    @elseif($lead->status === 'In Progress') badge-warning 
-                                                                                                    @elseif($lead->status === 'Closed') badge-success 
-                                                                                                        @else badge-secondary 
-                                                                                                    @endif">
+                                    <span
+                                        class="badge 
+                                                                                                                        @if($lead->status === 'New') badge-primary 
+                                                                                                                        @elseif($lead->status === 'In Progress') badge-warning 
+                                                                                                                        @elseif($lead->status === 'Closed') badge-success 
+                                                                                                                            @else badge-secondary 
+                                                                                                                        @endif">
                                         {{ $lead->status }}
                                     </span>
                                 </td>
                                 <td class="btn-actions">
-                                    <a href="{{ route('leads.show', $lead->id) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{route('lead.show', $lead->id)}}" class="btn btn-primary btn-sm">
                                         <i class="fas fa-eye"></i> View
                                     </a>
                                     <a href="{{ route('leads.edit', $lead->id) }}" class="btn btn-secondary btn-sm">

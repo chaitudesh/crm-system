@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerController;
 
@@ -10,18 +11,24 @@ class TaskController extends Controller
 {
     public function __construct()
     {
-        if (!session()->has('user_name')) {
-            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        if (!Auth::check()) {
+            redirect()->route('dashboard');
         }
     }
     public function index()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $tasks = Task::all();
         return view('tasks.index', compact('tasks'));
     }
 
     public function create()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $customers = Customer::all(); // Fetch all customers
         return view('tasks.create', compact('customers'));
     }
@@ -32,7 +39,7 @@ class TaskController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'due_date' => 'required|date',
-            'customer_id' => 'required|exists:customers,id', // Ensure it exists in the customers table
+            'customer_id' => 'required|exists:customers,id', // Ensure it exists in the 
         ]);
 
         Task::create($validated);

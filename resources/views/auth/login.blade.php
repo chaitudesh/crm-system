@@ -1,5 +1,4 @@
 @extends('layouts.dashboard')
-
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -42,7 +41,7 @@
                         <!-- Register or Forgot Password Links -->
                         <div class="text-center">
                             <a href="#" class="text-secondary">Forgot Password?</a> |
-                            <a href="{{Route('register.index')}}" class="text-secondary">Register</a>
+                            <a href="{{Route('register')}}" class="text-secondary">Register</a>
                         </div>
                     </form>
                 </div>

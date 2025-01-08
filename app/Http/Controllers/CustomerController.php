@@ -11,7 +11,7 @@ class CustomerController extends Controller
 
     public function __construct()
     {
-        
+
         if (!session()->has('user_name')) {
             return redirect()->route('login')->withErrors('Session expired. Please log in.');
         }
@@ -37,6 +37,7 @@ class CustomerController extends Controller
             'phone' => 'nullable',
             'company' => 'nullable',
         ]));
+
 
         return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
     }

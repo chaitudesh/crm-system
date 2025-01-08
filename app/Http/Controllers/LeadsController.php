@@ -8,18 +8,22 @@ class LeadsController extends Controller
 {
     public function __construct()
     {
-        if (!session()->has('user_name')) {
-            return redirect()->route('login')->withErrors('Session expired. Please log in.');
-        }
+
     }
     public function index()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         $leads = Lead::all();
         return view('leads.index', compact('leads'));
     }
 
     public function create()
     {
+        if (!session()->has('user_name')) {
+            return redirect()->route('login')->withErrors('Session expired. Please log in.');
+        }
         return view('leads.create');
     }
 

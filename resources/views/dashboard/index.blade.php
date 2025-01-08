@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+
 <style>
     /* Sidebar Styling */
     .sidebar {
